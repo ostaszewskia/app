@@ -28,7 +28,7 @@ const ButtonAppBar = () => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        ReactApp
+                        Test app
                     </Typography>
                     <Button color="inherit">Login</Button>
                 </Toolbar>
