@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import NavBar from "./NavBar";
-
-
+import App from "./pages/app/App";
+import {BrowserRouter as Router} from "react-router-dom";
 
 ReactDOM.render(
-    <div>
-        <NavBar />
-    </div>,
+    <Router>
+        <App />
+    </Router>,
   document.getElementById('root')
 );
