@@ -14,6 +14,7 @@ const useStyles = makeStyles( () =>
         content: {
             paddingTop: "80px",
             justifyContent: "center",
+            alignItems: "center",
         },
         navbar: {
             width: "100%"

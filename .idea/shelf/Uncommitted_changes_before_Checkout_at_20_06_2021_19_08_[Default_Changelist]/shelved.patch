@@ -1,0 +1,19 @@
+Index: src/NavBar.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import Button from '@material-ui/core/Button';\r\nimport {AppBar, IconButton, Toolbar, Typography} from \"@material-ui/core\";\r\nimport {makeStyles} from \"@material-ui/core/styles\";\r\nimport MenuIcon from '@material-ui/icons/Menu';\r\n\r\nconst useStyles = makeStyles((theme) => ({\r\n    root: {\r\n        flexGrow: 1,\r\n        margin : 0,\r\n        padding: 0,\r\n    },\r\n    menuButton: {\r\n        marginRight: theme.spacing(2),\r\n    },\r\n    title: {\r\n        flexGrow: 1,\r\n    },\r\n}));\r\n\r\nconst ButtonAppBar = () => {\r\n    const classes = useStyles();\r\n\r\n    return (\r\n        <div className={classes.root}>\r\n            <AppBar position=\"static\">\r\n                <Toolbar>\r\n                    <IconButton edge=\"start\" className={classes.menuButton} color=\"inherit\" aria-label=\"menu\">\r\n                        <MenuIcon />\r\n                    </IconButton>\r\n                    <Typography variant=\"h6\" className={classes.title}>\r\n                        Test app\r\n                    </Typography>\r\n                    <Button color=\"inherit\">Login</Button>\r\n                </Toolbar>\r\n            </AppBar>\r\n        </div>\r\n    );\r\n}\r\n\r\nexport default ButtonAppBar;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/NavBar.js b/src/NavBar.js
+--- a/src/NavBar.js	
++++ b/src/NavBar.js	
+@@ -28,7 +28,7 @@
+                         <MenuIcon />
+                     </IconButton>
+                     <Typography variant="h6" className={classes.title}>
+-                        Test app
++                        Test app 2
+                     </Typography>
+                     <Button color="inherit">Login</Button>
+                 </Toolbar>

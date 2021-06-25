@@ -4,6 +4,9 @@ import TextField from '@material-ui/core/TextField';
 import {Button, Grid} from "@material-ui/core";
 import UserContext from "../UserContext";
 import {Link as RouterLink } from "react-router-dom"
+import Alert from '@material-ui/lab/Alert';
+import { useHistory } from 'react-router-dom';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,21 +33,58 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LoginForm = () => {
+    const history = useHistory();
+    const [loggedIn, setLoggedIn] = useState(true);
+    //let loggedIn = false;
     const classes = useStyles();
     const [loginValue, setLoginValue] = useState("");
-    const { setUser } = useContext(UserContext);
+    const [passwordValue, setPasswordValue] = useState("");
+    const { setUser} = useContext(UserContext);
     const userContextChange = () => {
-        setUser({isLoggedIn: true, username: loginValue})
+        const userValues = {
+            username: loginValue,
+            password: passwordValue
+        }
+
+        USER_CREDENTIALS.forEach((userCR) => {
+            if (JSON.stringify(userValues) === JSON.stringify(userCR)){
+                setUser({isLoggedIn: true, username: loginValue});
+                console.log("dziłą");
+                setLoginValue(true)
+                history.push("/");
+            }
+
+        });
+        setLoggedIn(false)
+        console.log(loggedIn);
+
+
     }
 
+    const USER_CREDENTIALS = [
 
+        {
+            username: "user1",
+            password: "user1"
+        },
+        {
+            username: "user2",
+            password: "user2"
+        }
+    ];
     const handleLoginChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
         setLoginValue(event.target.value);
+    }
+
+    const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setPasswordValue(event.target.value);
     }
 
     return (
         <form className={classes.root} noValidate autoComplete="off">
             <h1>Login</h1>
+            {!loggedIn &&  <Alert severity="info">Podaj poprawne dane</Alert>}
             <div>
                 <TextField
                     label="Login"
@@ -58,7 +98,9 @@ const LoginForm = () => {
                 <TextField
                     label="Hasło"
                     type="password"
+                    value={passwordValue}
                     variant="outlined"
+                    onChange={handlePasswordChange}
                 />
             </div>
             <div className={classes.buttonContainer}>
@@ -76,7 +118,6 @@ const LoginForm = () => {
                     color="primary"
                     className={classes.button}
                     component={RouterLink}
-                    to="/"
                     onClick={userContextChange}
                 >
                     Zaloguj
