@@ -40,36 +40,55 @@ const RegisterForm = () => {
     const userContext = React.useContext(UserContext);
     const credentials = userContext.credentials;
     const {setUser} = useContext(UserContext);
-    let validated = true;
-    let existing = false;
+    // let validated = true;
+    // let existing = false;
+    const [validated, setValidated] = useState(true);
+    const [existing, setExisting] = useState(false);
     const userContextChange = () => {
+        setValidated(true);
+        setExisting(false);
 
-        if (loginValue === "" || passwordValue === ""){
-            validated = false;
+        //console.log("przeszło walidacje, validated: " + validated)
 
-            return;
+
+        //console.log("existing po znalezieniu: " + existing);
+
+        // setUser({isLoggedIn: true, username: loginValue});
+        // credentials[0].push({
+        //     username: loginValue,
+        //     password: passwordValue
+        // });
+        // history.push("/");
+        if (checkLogin(loginValue, passwordValue)){
+            setUser({isLoggedIn: true, username: loginValue});
+            credentials[0].push({
+                username: loginValue,
+                password: passwordValue
+            });
+            history.push("/");
         }
-        console.log("przeszło walidacje, validated: " + validated)
+        //const checked = checkLogin(loginValue, passwordValue);
+    }
 
-        credentials[0].findIndex(credential => {
-            if (credential.username === loginValue) {
-                existing = true;
-                console.log("znaleziony");
-                console.log("existing po znalezieniu: " + existing);
+    function checkLogin(loginVal, passVal) {
+        if (loginVal === "" || passVal === "") {
+            setValidated(false);
+
+            return false;
+        }
+        const exists = credentials[0].findIndex(credential => {
+            if (credential.username.valueOf() === loginVal.valueOf()) {
+                setExisting(true)
+
+
                 return true;
             }
-        })
-        if (existing){
-            console.log("znaleziony")
-            return;
-        }
-        setUser({isLoggedIn: true, username: loginValue});
-        credentials[0].push({
-            username: loginValue,
-            password: passwordValue
+            return false
         });
-        history.push("/");
+        return exists === -1;
+
     }
+
 
     const handleLoginChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -81,21 +100,12 @@ const RegisterForm = () => {
         setPasswordValue(event.target.value);
     }
 
-    const renderAlerts = () => {
-        console.log("validated po rednerze: " + validated);
-        console.log("existing po renderze: " + existing);
 
-        if (validated) {
-            return <Alert severity="info">Wartości loginu i hasła nie mogą być puste</Alert>
-        }
-        if (existing) {
-            return <Alert severity="info">Podany użytkownik już istnieje</Alert>
-        }
-    }
     return (
         <form className={classes.root} noValidate autoComplete="off">
             <h1>Register</h1>
-            <div id='alerts'></div>
+            {!validated && <Alert severity="info">Wartości loginu i hasła nie mogą być puste</Alert>}
+            {existing && <Alert severity="info">Podany użytkownik już istnieje</Alert>}
             <div>
                 <TextField
                     label="Login"

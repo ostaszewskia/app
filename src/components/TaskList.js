@@ -23,12 +23,16 @@ const TaskList = () => {
             )
         }
     })
+    let lastIndex = 0
+    if (rows.length > 0) {
+        lastIndex = rows[rows.length - 1].id;
+    }
 
     return (
 
         <div style={{height: '100%', width: '100%'}}>
-            <TaskForm username={username} lastIndex={rows[rows.length-1].id}/>
-            <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection/>
+            <TaskForm username={username} lastIndex={lastIndex}/>
+            <DataGrid rows={rows} columns={columns} checkboxSelection/>
         </div>
     )
 }

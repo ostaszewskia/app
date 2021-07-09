@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4892ca32-9fc2-4e21-b40f-4147b689eff8" name="Default Changelist" comment="tasklist działa">
+    <list default="true" id="4892ca32-9fc2-4e21-b40f-4147b689eff8" name="Default Changelist" comment="registration działa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TaskForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TaskForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TaskList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TaskList.js" afterDir="false" />
     </list>
@@ -110,7 +111,7 @@
       <workItem from="1624626137438" duration="10995000" />
       <workItem from="1625165384032" duration="3662000" />
       <workItem from="1625763687549" duration="22190000" />
-      <workItem from="1625815874915" duration="2201000" />
+      <workItem from="1625815874915" duration="5628000" />
     </task>
     <task id="LOCAL-00001" summary="normalne zmiany">
       <created>1625787874365</created>
@@ -119,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625787874365</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="tasklist działa">
+      <created>1625818329095</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1625818329095</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,6 +148,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="normalne zmiany" />
     <MESSAGE value="tasklist działa" />
-    <option name="LAST_COMMIT_MESSAGE" value="tasklist działa" />
+    <MESSAGE value="registration działa" />
+    <option name="LAST_COMMIT_MESSAGE" value="registration działa" />
   </component>
 </project>

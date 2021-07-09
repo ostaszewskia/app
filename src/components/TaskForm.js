@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const TaskForm = (props) => {
-    console.log(props);
+
     const classes = useStyles();
     const [taskNameValue, setTaskNameValue] = useState("");
     const [taskDescriptionValue, setTaskDescriptionValue] = useState("");
