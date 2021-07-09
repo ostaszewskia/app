@@ -4,6 +4,7 @@ import {Link as RouterLink} from "react-router-dom";
 import React, {useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import UserContext from "../UserContext";
+import Alert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -33,6 +34,7 @@ const TaskForm = (props) => {
     const classes = useStyles();
     const [taskNameValue, setTaskNameValue] = useState("");
     const [taskDescriptionValue, setTaskDescriptionValue] = useState("");
+    const [existing, setExisting] = useState(false);
     const userContext = React.useContext(UserContext);
     const tasks = userContext.tasks;
     const handleTaskNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,15 +47,27 @@ const TaskForm = (props) => {
     }
 
     const TaskContextChange = () => {
+        setExisting(false);
         const taskValues = {
-            id: props.lastIndex + 1,
             username: props.username,
             taskTitle: taskNameValue,
-            taskDescription: taskDescriptionValue
+            taskDescription: taskDescriptionValue,
+            done: false,
+            dateAdded: Date(),
         };
         if (taskNameValue === "") {
             return
         }
+
+        const checkIfExist = tasks[0].findIndex(taskInContext => {
+            return (taskInContext.taskTitle.valueOf() === taskNameValue.valueOf() &&
+                taskInContext.username.valueOf() === props.username.valueOf());
+        });
+        if (checkIfExist > -1){
+            setExisting(true);
+            return;
+        }
+
         tasks[0].push(taskValues);
 
 
@@ -62,6 +76,7 @@ const TaskForm = (props) => {
 
     return (
         <form className={classes.root} noValidate autoComplete="off">
+            {existing && <Alert severity="info">Posiadasz już zadanie o takiej nazwie (nazwa zadania musi być unikalna)</Alert>}
             <div>
                 <TextField
                     label="Nazwa zadania"

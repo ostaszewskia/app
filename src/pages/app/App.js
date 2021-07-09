@@ -5,24 +5,20 @@ import Routes from "./Routes";
 import NavBar from "./NavBar";
 import {useState} from "react";
 
-const useStyles = makeStyles( () =>
+const useStyles = makeStyles(() =>
     createStyles({
         root: {
             display: "flex",
             flexDirection: "column",
-            border: '2px solid red',
         },
         content: {
-            // paddingTop: "80px",
             justifyContent: "center",
             alignItems: "center",
-            border: '2px solid blue',
-            height: '93vh'
+            height: '90vh'
         },
         navbar: {
             width: "100%",
-            border: '2px solid green',
-            // height: '10vh'
+            height: '10vh'
         }
     })
 )
@@ -47,54 +43,75 @@ const App = () => {
             password: "byczek2"
         }
     ];
+    const date1 = new Date(2020, 1, 1, 17);
     const TASKS = [
         {
-            id: 1,
             username: "user1",
             taskTitle: "user1's task1",
-            taskDescription: "user1's task1 description"
+            taskDescription: "user1's task1 description",
+            done: false,
+            dateAdded: new Date(2020, 1, 2, 18),
+            //dateAdded: "",
         },
         {
-            id: 2,
             username: "user1",
             taskTitle: "user1's task2",
-            taskDescription: "user1's task2 description"
+            taskDescription: "user1's task2 description",
+            done: false,
+            dateAdded: new Date(2020, 1, 2, 18),
+            //dateAdded: "",
         },
         {
-            id: 3,
             username: "user1",
             taskTitle: "user1's task3",
-            taskDescription: "user1's task3 description"
+            taskDescription: "user1's task3 description",
+            done: true,
+            dateAdded: new Date(2020, 1, 3, 19),
+            //dateAdded: "",
         },
         {
-            id: 4,
             username: "user1",
             taskTitle: "user1's task4",
-            taskDescription: "user1's task4 description"
+            taskDescription: "user1's task4 description",
+            done: false,
+            dateAdded: new Date(2020, 1, 4, 20)
+            //dateAdded: "",
         },
         {
-            id: 1,
             username: "user2",
             taskTitle: "user2's task1",
-            taskDescription: "user2's task1 description"
+            taskDescription: "user2's task1 description",
+            done: false,
+            // dateAdded: new Date(2020, 2, 1, 17)
+            dateAdded: "",
+
         },
         {
-            id: 2,
             username: "user2",
             taskTitle: "user2's task2",
-            taskDescription: "user2's task2 description"
+            taskDescription: "user2's task2 description",
+            done: false,
+            // dateAdded: new Date(2020, 2, 2, 18)
+            dateAdded: "",
+
         },
         {
-            id: 3,
             username: "user2",
             taskTitle: "user2's task3",
-            taskDescription: "user2's task3 description"
+            taskDescription: "user2's task3 description",
+            done: true,
+            // dateAdded: new Date(2020, 2, 3, 19)
+            dateAdded: "",
+
         },
         {
-            id: 4,
             username: "user2",
             taskTitle: "user2's task4",
-            taskDescription: "user2's task4 description"
+            taskDescription: "user2's task4 description",
+            done: false,
+            // dateAdded: new Date(2020, 2, 4, 20)
+            dateAdded: "",
+
         },
     ]
 
@@ -103,14 +120,21 @@ const App = () => {
     const [context, setContext] = useState({isLoggedIn: false, username: ""},);
     const [tasksContext, addTask] = useState([TASKS]);
 
-    return(
-        <UserContext.Provider value={{ user: context, setUser: setContext , credentials: credentialContext, addUser: addUserContext, tasks: tasksContext, addTask: addTask}} >
+    return (
+        <UserContext.Provider value={{
+            user: context,
+            setUser: setContext,
+            credentials: credentialContext,
+            addUser: addUserContext,
+            tasks: tasksContext,
+            addTask: addTask
+        }}>
             <div className="App">
                 <div className={classes.root}>
-                    <CssBaseline />
+                    <CssBaseline/>
                     <NavBar className={classes.navbar}/>
                     <Grid container className={classes.content}>
-                            <Routes />
+                        <Routes/>
                     </Grid>
                 </div>
             </div>

@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/src/components/RegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TaskForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TaskForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TaskList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TaskList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +112,8 @@
       <workItem from="1624626137438" duration="10995000" />
       <workItem from="1625165384032" duration="3662000" />
       <workItem from="1625763687549" duration="22190000" />
-      <workItem from="1625815874915" duration="5628000" />
+      <workItem from="1625815874915" duration="11269000" />
+      <workItem from="1625854840508" duration="9617000" />
     </task>
     <task id="LOCAL-00001" summary="normalne zmiany">
       <created>1625787874365</created>
@@ -127,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625818329095</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="registration działa">
+      <created>1625822585091</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1625822585091</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

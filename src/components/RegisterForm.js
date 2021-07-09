@@ -40,25 +40,12 @@ const RegisterForm = () => {
     const userContext = React.useContext(UserContext);
     const credentials = userContext.credentials;
     const {setUser} = useContext(UserContext);
-    // let validated = true;
-    // let existing = false;
     const [validated, setValidated] = useState(true);
     const [existing, setExisting] = useState(false);
     const userContextChange = () => {
         setValidated(true);
         setExisting(false);
 
-        //console.log("przeszło walidacje, validated: " + validated)
-
-
-        //console.log("existing po znalezieniu: " + existing);
-
-        // setUser({isLoggedIn: true, username: loginValue});
-        // credentials[0].push({
-        //     username: loginValue,
-        //     password: passwordValue
-        // });
-        // history.push("/");
         if (checkLogin(loginValue, passwordValue)){
             setUser({isLoggedIn: true, username: loginValue});
             credentials[0].push({
@@ -67,7 +54,6 @@ const RegisterForm = () => {
             });
             history.push("/");
         }
-        //const checked = checkLogin(loginValue, passwordValue);
     }
 
     function checkLogin(loginVal, passVal) {
