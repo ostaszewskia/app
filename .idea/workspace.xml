@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4892ca32-9fc2-4e21-b40f-4147b689eff8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/RegisterForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TaskForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TaskList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/register/RegisterPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/tasks/TasksPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20_06_2021_19_08_[Default_Changelist]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20_06_2021_19_08__Default_Changelist_1.xml" beforeDir="false" />
+    <list default="true" id="4892ca32-9fc2-4e21-b40f-4147b689eff8" name="Default Changelist" comment="tasklist działa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UserContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/app/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/Routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TaskForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TaskForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TaskList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TaskList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,19 +74,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="C:/Users/Maciej/Desktop/szkola/6 semestr/JS/Project/app" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -134,8 +109,17 @@
       <updated>1624626120252</updated>
       <workItem from="1624626137438" duration="10995000" />
       <workItem from="1625165384032" duration="3662000" />
-      <workItem from="1625763687549" duration="21516000" />
+      <workItem from="1625763687549" duration="22190000" />
+      <workItem from="1625815874915" duration="2201000" />
     </task>
+    <task id="LOCAL-00001" summary="normalne zmiany">
+      <created>1625787874365</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1625787874365</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,5 +136,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="normalne zmiany" />
+    <MESSAGE value="tasklist działa" />
+    <option name="LAST_COMMIT_MESSAGE" value="tasklist działa" />
   </component>
 </project>

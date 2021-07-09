@@ -28,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const TaskForm = (currentUsername, lastIndex) => {
+const TaskForm = (props) => {
+    console.log(props);
     const classes = useStyles();
     const [taskNameValue, setTaskNameValue] = useState("");
     const [taskDescriptionValue, setTaskDescriptionValue] = useState("");
@@ -44,10 +45,9 @@ const TaskForm = (currentUsername, lastIndex) => {
     }
 
     const TaskContextChange = () => {
-        console.log(lastIndex);
         const taskValues = {
-            id: lastIndex + 1,
-            username: currentUsername.username,
+            id: props.lastIndex + 1,
+            username: props.username,
             taskTitle: taskNameValue,
             taskDescription: taskDescriptionValue
         };
