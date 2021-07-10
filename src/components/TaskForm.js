@@ -16,21 +16,12 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         alignItems: "center",
     },
-    buttonContainer: {
-        marginTop: "20px",
-        width: '40ch',
-        justifyItems: "space-between",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-    },
     button: {
         width: "19ch",
     }
 }));
 
 const TaskForm = (props) => {
-
     const classes = useStyles();
     const [taskNameValue, setTaskNameValue] = useState("");
     const [taskDescriptionValue, setTaskDescriptionValue] = useState("");
@@ -38,6 +29,7 @@ const TaskForm = (props) => {
     const [validated, setValidated] = useState(true);
     const userContext = React.useContext(UserContext);
     const tasks = userContext.tasks;
+
     const handleTaskNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
         setTaskNameValue(event.target.value);
@@ -66,20 +58,17 @@ const TaskForm = (props) => {
             return (taskInContext.taskTitle.valueOf() === taskNameValue.valueOf() &&
                 taskInContext.username.valueOf() === props.username.valueOf());
         });
-        if (checkIfExist > -1){
+        if (checkIfExist > -1) {
             setExisting(true);
             return;
         }
-
         tasks[0].push(taskValues);
-
-
     }
-
 
     return (
         <form className={classes.root} noValidate autoComplete="off">
-            {existing && <Alert severity="info">Posiadasz już zadanie o takiej nazwie (nazwa zadania musi być unikalna)</Alert>}
+            {existing &&
+            <Alert severity="info">Posiadasz już zadanie o takiej nazwie (nazwa zadania musi być unikalna)</Alert>}
             {!validated && <Alert severity="info">Zadanie musi posiadać nazwe</Alert>}
             <div>
                 <TextField
@@ -99,18 +88,17 @@ const TaskForm = (props) => {
                     onChange={handleTaskDescriptionChange}
                 />
             </div>
-            <div className={classes.buttonContainer}>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.button}
-                    component={RouterLink}
-                    onClick={TaskContextChange}
-                >
-                    Dodaj
-                </Button>
-            </div>
+            <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                component={RouterLink}
+                onClick={TaskContextChange}
+            >
+                Dodaj
+            </Button>
         </form>
     )
-}
-export default TaskForm
+};
+
+export default TaskForm;

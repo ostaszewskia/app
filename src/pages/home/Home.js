@@ -1,13 +1,19 @@
-import {Button, Grid, Paper} from "@material-ui/core";
+import {Button, Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-import React, {useState} from "react";
+import React from "react";
 import UserContext from "../../UserContext";
 import {Link as RouterLink} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
-    paper: {
-        width: '10vh',
-        height: '10vh',
+    container: {
+        display: "flex",
+        flexDirection: "column"
+    },
+    button: {
+        margin: "5px",
+    },
+    text: {
+        transition: "ease-in-out",
     }
 }));
 
@@ -15,48 +21,43 @@ const Home = () => {
     const userContext = React.useContext(UserContext);
     const isLoggedIn = userContext.user?.isLoggedIn;
     const classes = useStyles();
+
     return (
         <Grid>
-            <Paper elevation={3} className={classes.paper}>
-                TODOLIST
-            </Paper>
             {isLoggedIn ?
-                <div>
+
+                <Button
+                    component={RouterLink}
+                    to="/tasks"
+                    variant="contained"
+                    color="inherit"
+                >
+                    Pokaż listę
+                </Button> :
+                <div className={classes.container}>
+                    <h1 className={classes.text}>Witaj w aplikacji TODO</h1>
                     <Button
                         component={RouterLink}
-                        to="/tasks">
-                        <Paper
-                            className={classes.paper}
-                            elevation={3}>
-                            Pokaż liste
-                        </Paper>
-
-                    </Button></div> :
-                <div>
-                    <Button
-                        component={RouterLink}
-                        to="/login">
-                        <Paper
-                            className={classes.paper}
-                            elevation={3}>
-                            Zaloguj
-                        </Paper>
-
+                        to="/login"
+                        variant="contained"
+                        color="inherit"
+                        className={classes.button}
+                    >
+                        Logowanie
                     </Button>
                     <Button
                         component={RouterLink}
-                        to="/register">
-                        <Paper
-                            className={classes.paper}
-                            elevation={3}>
-                            Zarejestruj się
-                        </Paper>
-
+                        to="/register"
+                        variant="contained"
+                        color="inherit"
+                        className={classes.button}
+                    >
+                        Rejestracja
                     </Button>
                 </div>
             }
         </Grid>
     )
-}
+};
 
 export default Home;

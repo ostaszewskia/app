@@ -1,5 +1,5 @@
 import UserContext from "../../UserContext";
-import {createStyles, CssBaseline, Drawer, Grid} from "@material-ui/core";
+import {createStyles, CssBaseline, Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import Routes from "./Routes";
 import NavBar from "./NavBar";
@@ -14,11 +14,11 @@ const useStyles = makeStyles(() =>
         content: {
             justifyContent: "center",
             alignItems: "center",
-            height: '90vh'
+            height: '90vh',
         },
         navbar: {
             width: "100%",
-            height: '10vh'
+            height: '10vh',
         }
     })
 )
@@ -43,7 +43,6 @@ const App = () => {
             password: "byczek2"
         }
     ];
-    const date1 = new Date(2020, 1, 1, 17);
     const TASKS = [
         {
             username: "user1",
@@ -51,7 +50,6 @@ const App = () => {
             taskDescription: "user1's task1 description",
             done: false,
             dateAdded: new Date(2020, 1, 2, 18),
-            //dateAdded: "",
         },
         {
             username: "user1",
@@ -59,7 +57,6 @@ const App = () => {
             taskDescription: "user1's task2 description",
             done: false,
             dateAdded: new Date(2020, 1, 2, 18, 5),
-            //dateAdded: "",
         },
         {
             username: "user1",
@@ -67,7 +64,6 @@ const App = () => {
             taskDescription: "user1's task3 description",
             done: true,
             dateAdded: new Date(2020, 1, 3, 19),
-            //dateAdded: "",
         },
         {
             username: "user1",
@@ -75,47 +71,36 @@ const App = () => {
             taskDescription: "user1's task4 description",
             done: false,
             dateAdded: new Date(2020, 1, 4, 20, 50)
-            //dateAdded: "",
         },
         {
             username: "user2",
             taskTitle: "user2's task1",
             taskDescription: "user2's task1 description",
             done: false,
-            // dateAdded: new Date(2020, 2, 1, 17)
             dateAdded: "",
-
         },
         {
             username: "user2",
             taskTitle: "user2's task2",
             taskDescription: "user2's task2 description",
             done: false,
-            // dateAdded: new Date(2020, 2, 2, 18)
             dateAdded: "",
-
         },
         {
             username: "user2",
             taskTitle: "user2's task3",
             taskDescription: "user2's task3 description",
             done: true,
-            // dateAdded: new Date(2020, 2, 3, 19)
             dateAdded: "",
-
         },
         {
             username: "user2",
             taskTitle: "user2's task4",
             taskDescription: "user2's task4 description",
             done: false,
-            // dateAdded: new Date(2020, 2, 4, 20)
             dateAdded: "",
-
         },
-    ]
-
-
+    ];
     const [credentialContext, addUserContext] = useState([USER_CREDENTIALS]);
     const [context, setContext] = useState({isLoggedIn: false, username: ""},);
     const [tasksContext, addTask] = useState([TASKS]);

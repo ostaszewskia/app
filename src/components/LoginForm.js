@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import {Button, Grid} from "@material-ui/core";
+import {Button} from "@material-ui/core";
 import UserContext from "../UserContext";
 import {Link as RouterLink} from "react-router-dom"
 import Alert from '@material-ui/lab/Alert';
@@ -40,7 +40,7 @@ const LoginForm = () => {
     const [passwordValue, setPasswordValue] = useState("");
     const {credentials} = useContext(UserContext);
     const {setUser} = useContext(UserContext);
-    const userContext = React.useContext(UserContext);
+
     const userContextChange = () => {
         const userValues = {
             username: loginValue,
@@ -52,13 +52,11 @@ const LoginForm = () => {
                 setUser({isLoggedIn: true, username: loginValue});
                 history.push("/");
             }
-
         });
         setLoggedIn(false);
     }
 
     const handleLoginChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-
         setLoginValue(event.target.value);
     }
 
@@ -109,7 +107,7 @@ const LoginForm = () => {
                 </Button>
             </div>
         </form>
-    );
-}
+    )
+};
 
 export default LoginForm;
