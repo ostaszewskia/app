@@ -35,6 +35,7 @@ const TaskForm = (props) => {
     const [taskNameValue, setTaskNameValue] = useState("");
     const [taskDescriptionValue, setTaskDescriptionValue] = useState("");
     const [existing, setExisting] = useState(false);
+    const [validated, setValidated] = useState(true);
     const userContext = React.useContext(UserContext);
     const tasks = userContext.tasks;
     const handleTaskNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,15 +48,17 @@ const TaskForm = (props) => {
     }
 
     const TaskContextChange = () => {
+        setValidated(true);
         setExisting(false);
         const taskValues = {
             username: props.username,
             taskTitle: taskNameValue,
             taskDescription: taskDescriptionValue,
             done: false,
-            dateAdded: Date(),
+            dateAdded: new Date(),
         };
         if (taskNameValue === "") {
+            setValidated(false)
             return
         }
 
@@ -77,6 +80,7 @@ const TaskForm = (props) => {
     return (
         <form className={classes.root} noValidate autoComplete="off">
             {existing && <Alert severity="info">Posiadasz już zadanie o takiej nazwie (nazwa zadania musi być unikalna)</Alert>}
+            {!validated && <Alert severity="info">Zadanie musi posiadać nazwe</Alert>}
             <div>
                 <TextField
                     label="Nazwa zadania"

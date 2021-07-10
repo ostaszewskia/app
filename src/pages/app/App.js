@@ -58,7 +58,7 @@ const App = () => {
             taskTitle: "user1's task2",
             taskDescription: "user1's task2 description",
             done: false,
-            dateAdded: new Date(2020, 1, 2, 18),
+            dateAdded: new Date(2020, 1, 2, 18, 5),
             //dateAdded: "",
         },
         {
@@ -74,7 +74,7 @@ const App = () => {
             taskTitle: "user1's task4",
             taskDescription: "user1's task4 description",
             done: false,
-            dateAdded: new Date(2020, 1, 4, 20)
+            dateAdded: new Date(2020, 1, 4, 20, 50)
             //dateAdded: "",
         },
         {

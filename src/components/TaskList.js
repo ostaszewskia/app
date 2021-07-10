@@ -5,6 +5,7 @@ import TaskForm from "./TaskForm";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import CheckIcon from '@material-ui/icons/Check';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import RefreshIcon from '@material-ui/icons/Refresh';
 import {
     Button,
     Card, CardActions,
@@ -27,15 +28,16 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
     },
     card: {
-        width: '100%',
-        maxWidth: '360px',
         backgroundColor: theme.palette.background.paper,
-
+        margin: '20px',
+        '&:hover': {
+            background: "green",
+        },
     },
     tasksDiv: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
         alignContent: "space-between",
         flexWrap: "wrap",
     },
@@ -49,6 +51,14 @@ const useStyles = makeStyles((theme) => ({
     expandOpen: {
         transform: 'rotate(180deg)',
     },
+    done: {
+        backgroundColor: "green",
+        color: "white"
+    },
+    deleted: {
+        backgroundColor: "red",
+        color: "white"
+    },
 }));
 
 const TaskList = () => {
@@ -57,15 +67,26 @@ const TaskList = () => {
     const tasks = userContext.tasks;
     const classes = useStyles();
     const [expandedId, setExpandedId] = React.useState(-1);
+    const [doneId, setDoneId] = React.useState(-1);
+    const [deletedId, setDeletedId] = React.useState(-1);
     const [showDone, setShowDone] = React.useState(false);
 
     const handleCheckClick = () => {
         setShowDone(!showDone);
     };
 
+
     const handleExpandClick = (i) => {
         setExpandedId(expandedId === i ? -1 : i);
     };
+
+    const handleDoneClick = (i) => {
+        setDoneId(doneId === i ? -1 : i);
+    };
+    const handleDeleteClick = (i) => {
+        setDeletedId(deletedId === i ? -1 : i);
+    };
+
 
     let userTasks = [];
     tasks[0].forEach((tasks) => {
@@ -75,8 +96,6 @@ const TaskList = () => {
         }
     })
     userTasks.reverse();
-    console.log(userTasks[0].dateAdded);
-
     return (
 
         <div className={classes.root}>
@@ -90,11 +109,19 @@ const TaskList = () => {
                 }
                 label="Pokaż ukończone"
             />
+
             <div className={classes.tasksDiv}>
                 {userTasks.map((task) => {
+                    let taskDateMinutes = task.dateAdded.getMinutes();
+                    if (taskDateMinutes < 10) {
+                        taskDateMinutes = "0" + taskDateMinutes;
+                    }
+                    let hasDescription = () => {
+                        return task.taskDescription !== "";
+                    }
                     return (
 
-                        <Card className={classes.card} variant="outlined">
+                        <Card className='{classes.card}' variant="outlined">
                             <CardContent>
                                 <Typography variant="h4" component="h2">
                                     {task.taskTitle}
@@ -102,7 +129,7 @@ const TaskList = () => {
                             </CardContent>
                             <CardContent>
                                 <Typography variant="h7" component="h2">
-                                    {task.dateAdded.toString()}
+                                    {task.dateAdded.getDate() + "/" + task.dateAdded.getMonth() + "/" + task.dateAdded.getFullYear() + " " + task.dateAdded.getHours() + ":" + taskDateMinutes}
                                 </Typography>
                             </CardContent>
 
@@ -110,6 +137,7 @@ const TaskList = () => {
                                 <IconButton
                                     aria-label="mark as done"
                                     onClick={() => {
+                                        handleDoneClick(task.taskTitle);
                                         const index = tasks[0].findIndex(taskInContext => {
                                             return (taskInContext.taskTitle.valueOf() === task.taskTitle.valueOf() &&
                                                 taskInContext.username.valueOf() === task.username.valueOf());
@@ -123,17 +151,17 @@ const TaskList = () => {
                                 <IconButton
                                     aria-label="delete"
                                     onClick={() => {
-                                        console.log(tasks);
+                                        handleDeleteClick(task.taskTitle);
                                         const index = tasks[0].findIndex(taskInContext => {
                                             return (taskInContext.taskTitle.valueOf() === task.taskTitle.valueOf() &&
                                                 taskInContext.username.valueOf() === task.username.valueOf());
                                         });
                                         tasks[0].splice(index, 1);
-                                        console.log(tasks);
                                     }}>
                                     <DeleteForeverIcon/>
                                 </IconButton>
-                                <IconButton
+
+                                {hasDescription() && <IconButton
                                     className={clsx(classes.expand, {
                                         [classes.expandOpen]: expandedId,
                                     })}
@@ -142,14 +170,15 @@ const TaskList = () => {
                                     aria-label="show more"
                                 >
                                     <ExpandMoreIcon/>
-                                </IconButton>
+                                </IconButton>}
                             </CardActions>
+                            {hasDescription() &&
                             <Collapse in={expandedId === task.taskTitle} timeout="auto" unmountOnExit>
                                 <CardContent>
                                     <Typography paragraph>{task.taskDescription}</Typography>
 
                                 </CardContent>
-                            </Collapse>
+                            </Collapse>}
                         </Card>
                     );
                 })}</div>
