@@ -3,9 +3,8 @@ import {makeStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import {Button} from "@material-ui/core";
 import UserContext from "../UserContext";
-import {Link as RouterLink} from "react-router-dom"
+import {Link as RouterLink, useHistory} from "react-router-dom"
 import Alert from '@material-ui/lab/Alert';
-import {useHistory} from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,42 +31,67 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const LoginForm = () => {
+const RegisterForm = () => {
     const history = useHistory();
-    const [loggedIn, setLoggedIn] = useState(true);
     const classes = useStyles();
+
     const [loginValue, setLoginValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
-    const {credentials} = useContext(UserContext);
+    const userContext = React.useContext(UserContext);
+    const credentials = userContext.credentials;
     const {setUser} = useContext(UserContext);
-
+    const [validated, setValidated] = useState(true);
+    const [existing, setExisting] = useState(false);
     const userContextChange = () => {
-        const userValues = {
-            username: loginValue,
-            password: passwordValue
-        };
+        setValidated(true);
+        setExisting(false);
 
-        credentials[0].forEach((userCR) => {
-            if (JSON.stringify(userValues) === JSON.stringify(userCR)) {
-                setUser({isLoggedIn: true, username: loginValue});
-                history.push("/");
-            }
-        });
-        setLoggedIn(false);
+        if (checkLogin(loginValue, passwordValue)){
+            setUser({isLoggedIn: true, username: loginValue});
+            credentials[0].push({
+                username: loginValue,
+                password: passwordValue
+            });
+            history.push("/");
+        }
     }
 
+    function checkLogin(loginVal, passVal) {
+        if (loginVal === "" || passVal === "") {
+            setValidated(false);
+
+            return false;
+        }
+        const exists = credentials[0].findIndex(credential => {
+            if (credential.username.valueOf() === loginVal.valueOf()) {
+                setExisting(true)
+
+
+                return true;
+            }
+            return false
+        });
+        return exists === -1;
+
+    }
+
+
     const handleLoginChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
         setLoginValue(event.target.value);
+
     }
 
     const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPasswordValue(event.target.value);
     }
 
+
     return (
-        <form className={classes.root} noValidate autoComplete="on">
-            <h1>Login</h1>
-            {!loggedIn && <Alert severity="info">Podaj poprawne dane</Alert>}
+        <form className={classes.root} noValidate autoComplete="off">
+            <h1>Register</h1>
+            {!validated && <Alert severity="info">Wartości loginu i hasła nie mogą być puste</Alert>}
+            {existing && <Alert severity="info">Podany użytkownik już istnieje</Alert>}
             <div>
                 <TextField
                     label="Login"
@@ -103,11 +127,11 @@ const LoginForm = () => {
                     component={RouterLink}
                     onClick={userContextChange}
                 >
-                    Zaloguj
+                    Zarejestruj
                 </Button>
             </div>
         </form>
-    )
-};
+    );
+}
 
-export default LoginForm;
+export default RegisterForm;

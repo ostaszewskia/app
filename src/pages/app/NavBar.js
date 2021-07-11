@@ -29,7 +29,7 @@ const NavBar = () => {
                             component={RouterLink}
                             to="/"
                         >
-                            Test App
+                            TODO List
                         </Button>
                     </Typography>
                     <LoginButton />

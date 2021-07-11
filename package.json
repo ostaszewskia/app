@@ -39,7 +39,9 @@
   "devDependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@material-ui/core": "^4.11.4",
+    "@material-ui/data-grid": "^4.0.0-alpha.33",
     "@material-ui/icons": "^4.11.2",
+    "clsx": "^1.1.1",
     "react-router-dom": "^5.2.0"
   }
 }
